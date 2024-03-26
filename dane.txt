@@ -3,6 +3,7 @@ Michal Jagodzinski 2020 6969
 Olgierd Radwanski 3030 5792
 Mikolaj Watrobski 4040 827
 Tomasz Kraczaj 5050 9856
-Rafal Tomczak 6060 106
+Rafal Tomczak 6060 1064
 Marcel Koscielak 7070 727
 Wiktor Skora 8080 925
+Nicole Pieprz 9090 6734

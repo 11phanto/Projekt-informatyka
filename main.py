@@ -14,3 +14,4 @@ for x in range(1, 4):
         print('Masz jeszcze {} szans!'.format(3 - x))
     else:
         print('Brak dostępu! - Szanse się skończyły.')
+
