@@ -7,4 +7,10 @@ osoba_pin = {int(w[2]): [w[0], w[1], w[3]] for w in dane}
 for x in range(1, 4):
     PIN = int(input('Podaj PIN: '))
     if PIN in osoba_pin:
-        print('Witaj {}'.format(osoba_pin[PIN][0] + osoba_pin[PIN][1]))
+        print('Witaj {}'.format(osoba_pin[PIN][0] + ' ' + osoba_pin[PIN][1] + '!'))
+        osoba = osoba_pin[PIN]
+        break
+    elif x < 3:
+        print('Masz jeszcze {} szans!'.format(3 - x))
+    else:
+        print('Brak dostępu! - Szanse się skończyły.')
