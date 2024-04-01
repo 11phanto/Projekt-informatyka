@@ -37,14 +37,14 @@ for x in razy:
         print('|| Historia transakcji: Brak ')
     odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ \n\n')
     if type(odp) == str:
-        if odp.upper() == 'ZAKOŃCZ':
+        if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             break
-        elif odp.upper() == 'WYPŁATA':
+        elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
             print('Wypłata')
             print(' ')
-        elif odp.upper() == 'WPŁATA':
+        elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             print('Wpłata')
             print(' ')
         else:
@@ -53,3 +53,4 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
+
