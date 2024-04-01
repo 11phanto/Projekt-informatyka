@@ -35,6 +35,7 @@ def wplata(a, b, c, d, e, f):
     srodki_bankomat[4] + e
     srodki_bankomat[-1] + f
     suma_bankomatu += a * 10 + b * 20 + c * 50 + d * 100 + e * 200 + f * 500
+    his_plat.append('Wpłata - {} zł'.format(a * 10 + b * 20 + c * 50 + d * 100 + e * 200 + f * 500))
     print(' ')
 
 for x in razy:
