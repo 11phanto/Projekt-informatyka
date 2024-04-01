@@ -15,3 +15,12 @@ for x in range(1, 4):
     else:
         print('Brak dostępu! - Szanse się skończyły.')
 
+srodki_bankomat = 4500
+
+razy = [1]
+for x in razy:
+    razy.append(1)
+    print('|| {}'.format(osoba[0] + ' ' + osoba[1]))
+    print('|| Twój stan konta wynosi: {}'.format(osoba[-1]))
+    odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata \n\n')
+    break
