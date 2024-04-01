@@ -11,6 +11,7 @@ for x in range(1, 4):
         print('Witaj {}'.format(osoba_pin[PIN][0] + ' ' + osoba_pin[PIN][1] + '!'))
         print(' ')
         osoba = osoba_pin[PIN]
+        osoba[-1] = int(osoba[-1])
         break
     elif x < 3:
         print('Masz jeszcze {} szans!'.format(3 - x))
@@ -30,7 +31,7 @@ for x in razy:
     razy.append(1)
     print('Dane właściciela konta:')
     print('|| {} '.format(osoba[0] + ' ' + osoba[1]))
-    print('|| Twój stan konta wynosi: {} '.format(osoba[-1]))
+    print('|| Aktualny stan konta wynosi: {} '.format(osoba[-1]))
     if len(his_plat) > 0:
         print('|| Historia transakcji: {} '.format(x for x in his_plat))
     else:
@@ -40,7 +41,7 @@ for x in razy:
         if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
-            break
+            exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
             print('Wypłata')
             print(' ')
