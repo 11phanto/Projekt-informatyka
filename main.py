@@ -23,8 +23,12 @@ srodki_bankomat = 4500
 razy = [1]
 his_plat = []
 
+print(osoba)
+print(' ')
+
 for x in razy:
     razy.append(1)
+    print('Dane właściciela konta:')
     print('|| {} '.format(osoba[0] + ' ' + osoba[1]))
     print('|| Twój stan konta wynosi: {} '.format(osoba[-1]))
     if len(his_plat) > 0:
@@ -32,12 +36,20 @@ for x in razy:
     else:
         print('|| Historia transakcji: Brak ')
     odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ \n\n')
-    if type(odp) == type(1) or type(odp) == type(1.5):
-        print('Nie rozpoznano operacji, spróbój ponownie.')
+    if type(odp) == str:
+        if odp.upper() == 'ZAKOŃCZ':
+            print(' ')
+            print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
+            break
+        elif odp.upper() == 'WYPŁATA':
+            print('Wypłata')
+            print(' ')
+        elif odp.upper() == 'WPŁATA':
+            print('Wpłata')
+            print(' ')
+        else:
+            print('Nie rozpoznano operacji, spróbuj ponownie.')
+            print(' ')
+    else:
+        print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
-    if odp == 'Zakończ':
-        print(' ')
-        print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
-        break
-
-#print('|| Historia płatności: {}'.format(x for x in his_plat if len(his_plat) > 0))
