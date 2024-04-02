@@ -22,20 +22,28 @@ srodki_bankomat = [4, 6, 8, 10, 7, 3] #10, 20, 50, 100, 200, 500
 suma_bankomatu = srodki_bankomat[0] * 10 + srodki_bankomat[1] * 20 + srodki_bankomat[2] * 50 + srodki_bankomat[3] * 100 + srodki_bankomat[4] * 200 + srodki_bankomat[-1] * 500
 
 razy = [1]
-his_plat = []
-
-print(osoba)
-print(' ')
-
+his_plat = ''
+transakcja_ile = [1]
 def wplata(a, b, c, d, e, f):
-    srodki_bankomat[0] + a
-    srodki_bankomat[1] + b
-    srodki_bankomat[2] + c
-    srodki_bankomat[3] + d
-    srodki_bankomat[4] + e
-    srodki_bankomat[-1] + f
-    suma_bankomatu += a * 10 + b * 20 + c * 50 + d * 100 + e * 200 + f * 500
-    his_plat.append('Wpłata - {} zł'.format(a * 10 + b * 20 + c * 50 + d * 100 + e * 200 + f * 500))
+    global suma_bankomatu
+    global srodki_bankomat
+    global his_plat
+    global transakcja_ile
+    srodki_bankomat[0] += a
+    srodki_bankomat[1] += b
+    srodki_bankomat[2] += c
+    srodki_bankomat[3] += d
+    srodki_bankomat[4] += e
+    srodki_bankomat[-1] += f
+    razem = a * 10 + b * 20 + c * 50 + d * 100 + e * 200 + f * 500
+    suma_bankomatu += razem
+    osoba[-1] = osoba[-1] + razem
+    if len(transakcja_ile) == 1:
+        transakcja_wplata = 'Wpłata - {} zł '.format(razem)
+    if len(transakcja_ile) >= 2:
+        transakcja_wplata = ', Wpłata - {} zł '.format(razem)
+    transakcja_ile.append(1)
+    his_plat += transakcja_wplata
     print(' ')
 
 for x in razy:
@@ -43,9 +51,9 @@ for x in razy:
     print('Dane właściciela konta:')
     print('|| {} '.format(osoba[0] + ' ' + osoba[1]))
     print('|| Aktualny stan konta wynosi: {} '.format(osoba[-1]))
-    if len(his_plat) > 0:
-        print('|| Historia transakcji: {} '.format(x for x in his_plat))
-    else:
+    if len(transakcja_ile) >= 2:
+        print('|| Historia transakcji: {} '.format(his_plat))
+    elif len(transakcja_ile) == 1:
         print('|| Historia transakcji: Brak ')
     odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ \n\n')
     if type(odp) == str:
@@ -64,3 +72,6 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
+
+print(suma_bankomatu)
+print(srodki_bankomat)
