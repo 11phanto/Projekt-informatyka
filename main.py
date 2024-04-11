@@ -124,6 +124,9 @@ def wplata(a, b, c, d, e, f):
     his_plat += transakcja_wplata
     print(' ')
 
+def historia_tranzakcji():
+    print('Historia transakcji: {}'.format(his_plat))
+
 for x in razy:
     razy.append(1)
     print('Dane właściciela konta:')
@@ -133,7 +136,7 @@ for x in razy:
         print('|| Historia transakcji: {} '.format(his_plat))
     elif len(transakcja_ile) == 1:
         print('|| Historia transakcji: Brak ')
-    odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ \n\n')
+    odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ / Historia (Tranzakcji) \n\n')
     if type(odp) == str:
         if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
@@ -144,6 +147,8 @@ for x in razy:
             print(' ')
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
+        elif odp.upper() == 'HISTORIA':
+            historia_tranzakcji()
         else:
             print('Nie rozpoznano operacji, spróbuj ponownie.')
             print(' ')
