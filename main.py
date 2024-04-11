@@ -78,7 +78,7 @@ for x in razy:
                 historia_tranzakcji()
                 print(' ')
             else:
-                print('Nie wykonano żadnych operacji.')
+                print('Historia tranzakcji: Brak')
                 print(' ')
         else:
             print('Nie rozpoznano operacji, spróbuj ponownie.')
