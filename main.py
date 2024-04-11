@@ -1,4 +1,4 @@
-plik = open('dane.txt')
+'''plik = open('dane.txt')
 dane = plik.readlines()
 dane = [w.split() for w in dane]
 
@@ -74,7 +74,7 @@ for x in razy:
         print(' ')
 
 print(suma_bankomatu)
-print(srodki_bankomat)
+print(srodki_bankomat)'''
 
 plik = open('dane.txt')
 dane = plik.readlines()
@@ -131,12 +131,13 @@ for x in razy:
     razy.append(1)
     print('Dane właściciela konta:')
     print('|| {} '.format(osoba[0] + ' ' + osoba[1]))
-    print('|| Aktualny stan konta wynosi: {} '.format(osoba[-1]))
-    if len(transakcja_ile) >= 2:
-        print('|| Historia transakcji: {} '.format(his_plat))
-    elif len(transakcja_ile) == 1:
-        print('|| Historia transakcji: Brak ')
-    odp = input('|| Jaką operację chcesz wykonać? Wypłata / Wpłata / Zakończ / Historia (Tranzakcji) \n\n')
+    #print('|| Aktualny stan konta wynosi: {} '.format(osoba[-1]))
+    print('|| Jaką operację chcesz wykonać?')
+    print('|| * Stan konta')
+    print('|| * Wypłata')
+    print('|| * Wplata')
+    print('|| * Historia tranzakcji')
+    odp = input('|| * Zakończ \n \n')
     if type(odp) == str:
         if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
@@ -147,8 +148,16 @@ for x in razy:
             print(' ')
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
-        elif odp.upper() == 'HISTORIA':
-            historia_tranzakcji()
+        elif odp.upper() == 'STAN' or odp.upper() == 'STAN KONTA':
+            print('Aktualny stan konta wynosi: {} '.format(osoba[-1]))
+            print(' ')
+        elif odp.upper() == 'HISTORIA' or odp.upper() == 'HISTORIA OPERACJI':
+            if len(his_plat) >= 1:
+                historia_tranzakcji()
+                print(' ')
+            else:
+                print('Nie wykonano żadnych operacji.')
+                print(' ')
         else:
             print('Nie rozpoznano operacji, spróbuj ponownie.')
             print(' ')
