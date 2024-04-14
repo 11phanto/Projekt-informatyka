@@ -73,7 +73,7 @@ for x in razy:
         elif odp.upper() == 'STAN' or odp.upper() == 'STAN KONTA':
             print('Aktualny stan konta wynosi: {} '.format(osoba[-1]))
             print(' ')
-        elif odp.upper() == 'HISTORIA' or odp.upper() == 'HISTORIA OPERACJI':
+        elif odp.upper() == 'HISTORIA' or odp.upper() == 'HISTORIA TRANZAKCJI':
             if len(his_plat) >= 1:
                 historia_tranzakcji()
                 print(' ')
