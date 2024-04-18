@@ -24,6 +24,38 @@ suma_bankomatu = srodki_bankomat[0] * 10 + srodki_bankomat[1] * 20 + srodki_bank
 razy = [1]
 his_plat = ''
 transakcja_ile = [1]
+
+def wyplata(a):
+    global suma_bankomatu
+    global srodki_bankomat
+    global his_plat
+    global transakcja_ile
+    if int(a) <= osoba[-1]:
+        while a == 0:
+            if a % 500 == 0:
+                srodki_bankomat[5] = srodki_bankomat[5] - 1
+            elif a % 200 == 0:
+                srodki_bankomat[4] = srodki_bankomat[4] - 1
+            elif a % 100 == 0:
+                srodki_bankomat[3] = srodki_bankomat[3] - 1
+            elif a % 50 == 0:
+                srodki_bankomat[2] = srodki_bankomat[2] - 1
+            elif a % 20 == 0:
+                srodki_bankomat[1] = srodki_bankomat[1] - 1
+            elif a % 10 == 0:
+                srodki_bankomat[0] = srodki_bankomat[0] - 1
+        print("Twoje pieniądze zostały wypłacone, dziękujemy za korzystanie z naszych usług!")
+        osoba[-1] = osoba[-1] - int(a)
+    else:
+        print("Brak środków do wykonania transakcji!")
+    if len(transakcja_ile) == 1:
+        transakcja_wplata = 'Wyplata - {} zł '.format(a)
+    if len(transakcja_ile) >= 2:
+        transakcja_wplata = ', Wyplata - {} zł '.format(a)
+    transakcja_ile.append(1)
+    his_plat += transakcja_wplata
+    print(' ')
+
 def wplata(a, b, c, d, e, f):
     global suma_bankomatu
     global srodki_bankomat
@@ -66,8 +98,18 @@ for x in razy:
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
-            print('Wypłata')
-            print(' ')
+            #wyplata(int(input("Podaj kwotę do wypłacenia.")))
+            for i in range(1):
+                czy_nie_ok = True
+                while czy_nie_ok:
+                    odp = input("Podaj kwotę do wypłacenia.\n\n")
+                    if odp.isdigit():
+                        czy_nie_ok = False
+                    else:
+                        print(' ')
+                        print('Nie podano liczby, spróbuj ponownie.')
+                        print(' ')
+            wyplata(odp)
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             #wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
             odpowiedzi = []
