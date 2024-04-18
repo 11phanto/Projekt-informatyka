@@ -48,12 +48,13 @@ def wyplata(a):
         osoba[-1] = osoba[-1] - int(a)
     else:
         print("Brak środków do wykonania transakcji!")
-    if len(transakcja_ile) == 1:
-        transakcja_wplata = 'Wyplata - {} zł '.format(a)
-    if len(transakcja_ile) >= 2:
-        transakcja_wplata = ', Wyplata - {} zł '.format(a)
-    transakcja_ile.append(1)
-    his_plat += transakcja_wplata
+    if int(a) <= osoba[-1]:
+        if len(transakcja_ile) == 1:
+            transakcja_wyplata = 'Wyplata - {} zł '.format(a)
+        if len(transakcja_ile) >= 2:
+            transakcja_wyplata = ', Wyplata - {} zł '.format(a)
+        transakcja_ile.append(1)
+        his_plat += transakcja_wyplata
     print(' ')
 
 def wplata(a, b, c, d, e, f):
