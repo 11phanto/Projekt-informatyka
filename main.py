@@ -70,16 +70,21 @@ for x in razy:
             print(' ')
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             #wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
-            czy_nie_ok = True
             odpowiedzi = []
-            for i in odpowiedzi:
+            ile_zlotych = [10, 20, 50, 100, 200, 500]
+            czy_nie_ok = True
+            for i in range(0, 6):
+                czy_nie_ok = True
                 while czy_nie_ok:
-                    f = input('Ilość banknotów 10zł: ')
-                    if f.isdigit():
+                    odp = input('Ilość banknotów {}zł: '.format(ile_zlotych[i]))
+                    if odp.isdigit():
+                        odpowiedzi.append(int(odp))
                         czy_nie_ok = False
                     else:
+                        print(' ')
                         print('Nie podano liczby, spróbuj ponownie.')
-                wplata(a, b, c, d, e, f)
+                        print(' ')
+            wplata(odpowiedzi[0], odpowiedzi[1], odpowiedzi[2], odpowiedzi[3], odpowiedzi[4], odpowiedzi[5])
         elif odp.upper() == 'STAN' or odp.upper() == 'STAN KONTA':
             print('Aktualny stan konta wynosi: {} '.format(osoba[-1]))
             print(' ')
