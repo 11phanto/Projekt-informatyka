@@ -69,7 +69,17 @@ for x in razy:
             print('Wypłata')
             print(' ')
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
-            wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
+            #wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
+            czy_nie_ok = True
+            odpowiedzi = []
+            for i in odpowiedzi:
+                while czy_nie_ok:
+                    f = input('Ilość banknotów 10zł: ')
+                    if f.isdigit():
+                        czy_nie_ok = False
+                    else:
+                        print('Nie podano liczby, spróbuj ponownie.')
+                wplata(a, b, c, d, e, f)
         elif odp.upper() == 'STAN' or odp.upper() == 'STAN KONTA':
             print('Aktualny stan konta wynosi: {} '.format(osoba[-1]))
             print(' ')
@@ -86,3 +96,10 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
+
+'''while czy_nie_ok:
+    liczba = input('podaj ilość')
+    if liczba.isdigit():
+        czy_nie_ok = False
+    else:
+        print('podaj liczbę')'''
