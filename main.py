@@ -51,6 +51,7 @@ def wyplata(a):
         a -= 10 * ile_10
         srodki_bankomat[0] = srodki_bankomat[0] - ile_10
         print("Twoje pieniądze zostały wypłacone, dziękujemy za korzystanie z naszych usług!")
+        print(' ')
         osoba[-1] = osoba[-1] - int(a)
     else:
         print("Brak środków do wykonania transakcji!")
@@ -106,8 +107,17 @@ for x in razy:
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
-            print('Wypłata')
-            print(' ')
+            for i in range(1):
+                czy_nie_ok = True
+                while czy_nie_ok:
+                    a = input('Podaj kwotę którą chcesz wypłacić: \n\n')
+                    if a.isdigit():
+                        czy_nie_ok = False
+                    else:
+                        print(' ')
+                        print('Nie podano liczby, spróbuj ponownie.')
+                        print(' ')
+            wyplata(a)
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
             # wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
             odpowiedzi = []
