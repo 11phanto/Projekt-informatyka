@@ -24,6 +24,45 @@ suma_bankomatu = srodki_bankomat[0] * 10 + srodki_bankomat[1] * 20 + srodki_bank
 razy = [1]
 his_plat = ''
 transakcja_ile = [1]
+
+def wyplata(a):
+    a = int(a)
+    global suma_bankomatu
+    global srodki_bankomat
+    global his_plat
+    global transakcja_ile
+    if a <= osoba[-1]:
+        ile_500 = a // 500;
+        a -= 500 * ile_500
+        srodki_bankomat[5] = srodki_bankomat[5] - ile_500
+        ile_200 = a // 200;
+        a -= 200 * ile_200
+        srodki_bankomat[4] = srodki_bankomat[4] - ile_200
+        ile_100 = a // 100;
+        a -= 100 * ile_100
+        srodki_bankomat[3] = srodki_bankomat[3] - ile_100
+        ile_50 = a // 50;
+        a -= 50 * ile_50
+        srodki_bankomat[2] = srodki_bankomat[2] - ile_50
+        ile_20 = a // 20;
+        a -= 20 * ile_20
+        srodki_bankomat[1] = srodki_bankomat[1] - ile_20
+        ile_10 = a // 10;
+        a -= 10 * ile_10
+        srodki_bankomat[0] = srodki_bankomat[0] - ile_10
+        print("Twoje pieniądze zostały wypłacone, dziękujemy za korzystanie z naszych usług!")
+        osoba[-1] = osoba[-1] - a
+    else:
+        print("Brak środków do wykonania transakcji!")
+    if int(a) <= osoba[-1]:
+        if len(transakcja_ile) == 1:
+            transakcja_wyplata = 'Wyplata - {} zł '.format(a)
+        if len(transakcja_ile) >= 2:
+            transakcja_wyplata = ', Wyplata - {} zł '.format(a)
+        transakcja_ile.append(1)
+        his_plat += transakcja_wyplata
+    print(' ')
+
 def wplata(a, b, c, d, e, f):
     global suma_bankomatu
     global srodki_bankomat
@@ -66,20 +105,35 @@ for x in razy:
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
-            print('Wypłata')
-            print(' ')
-        elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
-            #wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
-            czy_nie_ok = True
-            odpowiedzi = []
-            for i in odpowiedzi:
+            # wyplata(int(input("Podaj kwotę do wypłacenia.")))
+            for i in range(1):
+                czy_nie_ok = True
                 while czy_nie_ok:
-                    f = input('Ilość banknotów 10zł: ')
-                    if f.isdigit():
+                    a = input("Podaj kwotę do wypłacenia.\n\n")
+                    if a.isdigit():
                         czy_nie_ok = False
                     else:
+                        print(' ')
                         print('Nie podano liczby, spróbuj ponownie.')
-                wplata(a, b, c, d, e, f)
+                        print(' ')
+            wyplata(a)
+        elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
+            # wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
+            odpowiedzi = []
+            ile_zlotych = [10, 20, 50, 100, 200, 500]
+            czy_nie_ok = True
+            for i in range(0, 6):
+                czy_nie_ok = True
+                while czy_nie_ok:
+                    odp = input('Ilość banknotów {}zł: '.format(ile_zlotych[i]))
+                    if odp.isdigit():
+                        odpowiedzi.append(int(odp))
+                        czy_nie_ok = False
+                    else:
+                        print(' ')
+                        print('Nie podano liczby, spróbuj ponownie.')
+                        print(' ')
+            wplata(odpowiedzi[0], odpowiedzi[1], odpowiedzi[2], odpowiedzi[3], odpowiedzi[4], odpowiedzi[5])
         elif odp.upper() == 'STAN' or odp.upper() == 'STAN KONTA':
             print('Aktualny stan konta wynosi: {} '.format(osoba[-1]))
             print(' ')
