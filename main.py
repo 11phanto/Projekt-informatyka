@@ -63,7 +63,7 @@ def wyplata(a):
         his_plat += transakcja_wyplata
     print(' ')
 
-def wplata(a, b, c, d, e, f):
+def wplata(a, b, c, d, e, f):#
     global suma_bankomatu
     global srodki_bankomat
     global his_plat
