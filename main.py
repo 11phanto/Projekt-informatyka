@@ -118,7 +118,6 @@ for x in razy:
                         print(' ')
             wyplata(a)
         elif odp.upper() == 'WPŁATA' or odp.upper() == 'WPLATA':
-            # wplata(int(input('Ilość banknotów 10zł: ')), int(input('Ilość banknotów 20zł: ')), int(input('Ilość banknotów 50zł: ')), int(input('Ilość banknotów 100zł: ')), int(input('Ilość banknotów 200zł: ')), int(input('Ilość banknotów 500zł: ')))
             odpowiedzi = []
             ile_zlotych = [10, 20, 50, 100, 200, 500]
             czy_nie_ok = True
