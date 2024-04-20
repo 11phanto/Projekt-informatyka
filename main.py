@@ -150,10 +150,3 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
-
-'''while czy_nie_ok:
-    liczba = input('podaj ilość')
-    if liczba.isdigit():
-        czy_nie_ok = False
-    else:
-        print('podaj liczbę')'''
