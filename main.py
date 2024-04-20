@@ -93,7 +93,6 @@ for x in razy:
     razy.append(1)
     print('Dane właściciela konta:')
     print('|| {} '.format(osoba[0] + ' ' + osoba[1]))
-    #print('|| Aktualny stan konta wynosi: {} '.format(osoba[-1]))
     print('|| Jaką operację chcesz wykonać?')
     print('|| * Stan konta')
     print('|| * Wypłata')
