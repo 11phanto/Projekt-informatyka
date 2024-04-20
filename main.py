@@ -31,7 +31,15 @@ def wyplata(a):
     global his_plat
     global transakcja_ile
     a = int(a)
+    if int(a) <= osoba[-1]:
+        if len(transakcja_ile) == 1:
+            transakcja_wyplata = 'Wyplata - {} zł '.format(a)
+        if len(transakcja_ile) >= 2:
+            transakcja_wyplata = ', Wyplata - {} zł '.format(a)
+        transakcja_ile.append(1)
+        his_plat += transakcja_wyplata
     if a <= osoba[-1]:
+        osoba[-1] = osoba[-1] - a
         ile_500 = a // 500
         a -= 500 * ile_500
         srodki_bankomat[5] = srodki_bankomat[5] - ile_500
@@ -51,17 +59,8 @@ def wyplata(a):
         a -= 10 * ile_10
         srodki_bankomat[0] = srodki_bankomat[0] - ile_10
         print("Twoje pieniądze zostały wypłacone, dziękujemy za korzystanie z naszych usług!")
-        print(' ')
-        osoba[-1] = osoba[-1] - int(a)
     else:
         print("Brak środków do wykonania transakcji!")
-    if int(a) <= osoba[-1]:
-        if len(transakcja_ile) == 1:
-            transakcja_wyplata = 'Wyplata - {} zł '.format(a)
-        if len(transakcja_ile) >= 2:
-            transakcja_wyplata = ', Wyplata - {} zł '.format(a)
-        transakcja_ile.append(1)
-        his_plat += transakcja_wyplata
     print(' ')
 
 
