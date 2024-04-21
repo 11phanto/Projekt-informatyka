@@ -12,13 +12,14 @@ dane1 = plik.readlines()
 dane1 = [w.strip('\n') for w in dane1]
 
 for x in dane1:
-    his_plat = {int(w[2]):dane1[dane.index(w)] for w in dane}
+    his_plat = {w[2]:dane1[dane.index(w)] for w in dane}
 print(his_plat)
 
 transakcje = {}
 
 for x in dane1:
     transakcje = {w[2]: x for w in dane}
+print(transakcje)
 
 razy = [1]
 razy_2 = [1]
@@ -58,7 +59,7 @@ for x in range(1, 4):
         print('Witaj {}'.format(osoba_pin[PIN][0] + ' ' + osoba_pin[PIN][1] + '!'))
         print(' ')
         osoba = osoba_pin[PIN]
-        osoba.append(transakcje[PIN])
+        osoba.append(his_plat[PIN])
         his_plat = osoba[-1]
         osoba[2] = int(osoba[2])
         break
@@ -102,7 +103,7 @@ def wyplata(a):
                 print('Możesz wypłacić maksymalnie {}zł'.format(suma_bankomatu))
         elif a <= osoba[2] and suma_bankomatu >= a:
             transakcja_wyplata = ', Wyplata - {} zł '.format(a)
-            his_plat[PIN] += transakcja_wyplata
+            osoba[-1] += transakcja_wyplata
             osoba[2] = osoba[2] - a
             ile_500 = a // 500
             a -= 500 * ile_500
@@ -141,12 +142,11 @@ def wplata(a, b, c, d, e, f):
     suma_bankomatu += razem
     osoba[2] = osoba[2] + razem
     transakcja_wplata = ', Wpłata - {} zł '.format(razem)
-    his_plat[PIN] += transakcja_wplata
+    osoba[-1] += transakcja_wplata
     print(' ')
 
-PIN = int(PIN)
 def historia_transakcji():
-    print('Historia transakcji: {}'.format(his_plat[PIN]))
+    print('Historia transakcji: {}'.format(osoba[-1]))
 
 for x in razy:
     razy.append(1)
@@ -161,6 +161,10 @@ for x in razy:
     if type(odp) == str:
         if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
+            plik = open('transakcje.txt', 'w')
+            print(transakcje)
+            for i in transakcje:
+                plik.write(transakcje[i] + '\n')
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
@@ -207,9 +211,3 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
-
-transakcje[PIN] = his_plat
-
-plik = open('transakcje.txt', 'w')
-for i in transakcje:
-    plik.write(transakcje[i]+'\n')
