@@ -1,3 +1,6 @@
+global his_plat
+global PIN
+
 plik = open('dane.txt')
 dane = plik.readlines()
 dane = [w.split() for w in dane]
@@ -7,6 +10,10 @@ osoba_pin = {w[2]: [w[0], w[1], w[3]] for w in dane}
 plik = open('transakcje.txt')
 dane1 = plik.readlines()
 dane1 = [w.strip('\n') for w in dane1]
+
+for x in dane1:
+    his_plat = {int(w[2]):dane1[dane.index(w)] for w in dane}
+print(his_plat)
 
 transakcje = {}
 
@@ -37,7 +44,6 @@ print(' ')
 suma_bankomatu = srodki_bankomat[0] * 10 + srodki_bankomat[1] * 20 + srodki_bankomat[2] * 50 + srodki_bankomat[3] * 100 + srodki_bankomat[4] * 200 + srodki_bankomat[-1] * 500
 
 for x in range(1, 4):
-    global his_plat
     for i in range(1):
         czy_nie_ok = True
         while czy_nie_ok:
@@ -96,7 +102,7 @@ def wyplata(a):
                 print('Możesz wypłacić maksymalnie {}zł'.format(suma_bankomatu))
         elif a <= osoba[2] and suma_bankomatu >= a:
             transakcja_wyplata = ', Wyplata - {} zł '.format(a)
-            his_plat += transakcja_wyplata
+            his_plat[PIN] += transakcja_wyplata
             osoba[2] = osoba[2] - a
             ile_500 = a // 500
             a -= 500 * ile_500
@@ -135,11 +141,12 @@ def wplata(a, b, c, d, e, f):
     suma_bankomatu += razem
     osoba[2] = osoba[2] + razem
     transakcja_wplata = ', Wpłata - {} zł '.format(razem)
-    his_plat += transakcja_wplata
+    his_plat[PIN] += transakcja_wplata
     print(' ')
 
+PIN = int(PIN)
 def historia_transakcji():
-    print('Historia transakcji: {}'.format(his_plat))
+    print('Historia transakcji: {}'.format(his_plat[PIN]))
 
 for x in razy:
     razy.append(1)
@@ -200,6 +207,8 @@ for x in razy:
     else:
         print('Nie rozpoznano operacji, spróbuj ponownie.')
         print(' ')
+
+transakcje[PIN] = his_plat
 
 plik = open('transakcje.txt', 'w')
 for i in transakcje:
