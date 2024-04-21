@@ -10,9 +10,8 @@ dane1 = [w.strip('\n') for w in dane1]
 
 transakcje = {}
 
-for w in dane1:
-    transakcje = {int(x[2]): w for x in dane}
-print(transakcje)
+for x in dane1:
+    transakcje = {w[2]: x for w in dane}
 
 razy = [1]
 razy_2 = [1]
@@ -53,7 +52,7 @@ for x in range(1, 4):
         print('Witaj {}'.format(osoba_pin[PIN][0] + ' ' + osoba_pin[PIN][1] + '!'))
         print(' ')
         osoba = osoba_pin[PIN]
-        osoba.append(transakcje[int(PIN)])
+        osoba.append(transakcje[PIN])
         his_plat = osoba[-1]
         osoba[2] = int(osoba[2])
         break
