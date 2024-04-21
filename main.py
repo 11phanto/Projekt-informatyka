@@ -13,13 +13,11 @@ dane1 = [w.strip('\n') for w in dane1]
 
 for x in dane1:
     his_plat = {w[2]:dane1[dane.index(w)] for w in dane}
-print(his_plat)
 
 transakcje = {}
 
 for x in dane1:
     transakcje = {w[2]: x for w in dane}
-print(transakcje)
 
 razy = [1]
 razy_2 = [1]
@@ -84,9 +82,13 @@ def wyplata(a):
         test = list(test)
         test[-1] = str(0)
         napis = ''
-        for i in range(len(test)):
-            napis = napis + i
-        print('Możesz wypłacić maksymalnie: {}zł'.format(napis))
+        if a > 10:
+            for i in range(len(test)):
+                napis = napis + i
+            print('Możesz wypłacić maksymalnie: {}zł'.format(napis))
+        if a < 10:
+            print('Nie możesz wypłacić tak niskiej kwoty.')
+            print(' ')
     else:
         if a > osoba[2] or suma_bankomatu < a:
             test = str(osoba[2])
@@ -161,10 +163,10 @@ for x in razy:
     if type(odp) == str:
         if odp.upper() == 'ZAKOŃCZ' or odp.upper() == 'ZAKONCZ':
             print(' ')
-            plik = open('transakcje.txt', 'w')
+            '''plik = open('transakcje.txt', 'w') #Nie działa nadpisywanie :(
             print(transakcje)
             for i in transakcje:
-                plik.write(transakcje[i] + '\n')
+                plik.write(transakcje[i] + '\n')'''
             print('Dziękujemy za użycie naszego bankomatu, zapraszamy ponownie.')
             exit()
         elif odp.upper() == 'WYPŁATA' or odp.upper() == 'WYPLATA':
